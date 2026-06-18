@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St James Haven | A Place of Warmth, Safety &amp; Belonging</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C8992A;
+  --green:#1F4E35;
+  --green-mid:#2E7D52;
+  --green-pale:#EAF4EE;
+  --sage:#6A9478;
+  --cream:#FAF7F2;
+  --cream-dark:#EDE8E0;
+  --text:#1A2E22;
+  --text-mid:#3D5C48;
+  --text-light:#6A9478;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:"Jost",sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+.page{display:none}
+.page.active{display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 60px;height:80px;display:flex;align-items:center;justify-content:space-between;background:var(--green);border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-logo{cursor:pointer;display:flex;flex-direction:column;line-height:1}
+.nav-logo-name{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:1px}
+.nav-logo-sub{font-family:"Jost",sans-serif;font-size:9px;font-weight:300;letter-spacing:4px;color:rgba(255,255,255,0.55);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-family:"Jost",sans-serif;font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;transition:color 0.3s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active-link{color:#fff}
+.nav-cta{background:rgba(255,255,255,0.12)!important;color:#fff!important;padding:10px 24px;border:1px solid rgba(255,255,255,0.25)!important}
+.nav-cta:hover{background:rgba(255,255,255,0.22)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:all 0.3s}
+.mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:var(--green);z-index:99;padding:8px 0;flex-direction:column;border-bottom:2px solid var(--gold)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:"Jost",sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;padding:16px 32px;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;transition:color 0.3s,background 0.3s}
+.mobile-menu a:hover{color:#fff;background:rgba(255,255,255,0.06)}
+.mobile-menu a.mobile-cta{background:var(--gold);color:var(--green);margin:12px 32px;text-align:center;border-bottom:none;font-weight:500}
+
+/* SHARED */
+.page-wrap{padding-top:80px}
+section{padding:100px 80px}
+.section-inner{max-width:1200px;margin:0 auto}
+.eyebrow{font-family:"Jost",sans-serif;font-size:10px;font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--sage);margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.eyebrow::before{content:"";width:32px;height:1px;background:var(--gold);flex-shrink:0}
+.eyebrow-c{justify-content:center}
+.eyebrow-c::before{display:none}
+.h1,.h2{font-family:"Playfair Display",serif;font-weight:400;color:var(--green);line-height:1.2;margin-bottom:24px}
+.h1{font-size:clamp(32px,3.5vw,52px)}
+.h2{font-size:clamp(28px,3vw,46px)}
+.h1 em,.h2 em{font-style:italic;color:var(--green-mid)}
+.h-light{color:var(--cream)}
+.h-light em{color:var(--gold)}
+.body{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.85;color:var(--text-mid)}
+.btn-d{display:inline-block;background:var(--green);color:#fff;padding:16px 40px;font-family:"Jost",sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:2px solid var(--green);cursor:pointer;transition:all 0.3s;text-decoration:none}
+.btn-d:hover{background:transparent;color:var(--green)}
+.btn-g{display:inline-block;background:transparent;color:var(--green);padding:16px 40px;font-family:"Jost",sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:2px solid var(--green);cursor:pointer;transition:all 0.3s;text-decoration:none}
+.btn-g:hover{background:var(--green);color:#fff}
+.btn-c{display:inline-block;background:var(--cream);color:var(--green);padding:16px 40px;font-family:"Jost",sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:2px solid var(--cream);cursor:pointer;transition:all 0.3s;text-decoration:none}
+.btn-c:hover{background:transparent;color:var(--cream)}
+
+/* PAGE HERO */
+.pg-hero{background:var(--cream);padding:100px 80px 80px}
+.pg-hero-inner{max-width:1200px;margin:0 auto}
+.pg-hero .h1{margin-bottom:0}
+
+/* FOOTER */
+footer{background:var(--green);padding:60px 80px;display:flex;justify-content:space-between;align-items:center;gap:40px}
+.ft-brand{cursor:pointer}
+.ft-name{font-family:"Playfair Display",serif;font-size:20px;font-weight:600;color:var(--cream);letter-spacing:1px}
+.ft-tag{font-family:"Cormorant Garamond",serif;font-size:14px;font-style:italic;color:var(--gold);margin-top:5px}
+.ft-nav{display:flex;flex-direction:column;align-items:center;gap:20px}
+.ft-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;justify-content:center}
+.ft-links a{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,242,0.5);text-decoration:none;transition:color 0.3s;cursor:pointer}
+.ft-links a:hover{color:var(--cream)}
+.ft-li{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,242,0.5);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.3s}
+.ft-li:hover{color:var(--cream)}
+.ft-contact{text-align:right}
+.ft-email{font-family:"Jost",sans-serif;font-size:13px;color:var(--gold);text-decoration:none;display:block;transition:color 0.3s}
+.ft-email:hover{color:#fff}
+.ft-copy{font-family:"Jost",sans-serif;font-size:11px;color:rgba(250,247,242,0.3);margin-top:6px}
+
+/* CTA BAND */
+.cta-band{background:var(--green-pale);padding:80px;text-align:center}
+.cta-inner{max-width:680px;margin:0 auto}
+.cta-inner .body{margin-bottom:40px}
+
+/* ── HOME ── */
+.home-hero{min-height:calc(100vh - 80px);background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden}
+.hero-title{font-family:"Playfair Display",serif;font-size:clamp(40px,8vw,96px);font-weight:400;color:var(--green);line-height:1.1;margin-bottom:20px}
+.hero-tag{font-family:"Cormorant Garamond",serif;font-size:clamp(18px,3vw,34px);font-style:italic;color:var(--green-mid);margin-bottom:36px}
+.hero-rule{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:36px}
+.hero-rule span{width:60px;height:1px;background:var(--green);opacity:0.2;display:block}
+.hero-rule i{width:5px;height:5px;background:var(--green-mid);border-radius:50%;display:block}
+.hero-body{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.8;color:var(--text-mid);max-width:520px;margin:0 auto 48px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
+.hero-ofsted{display:inline-flex;align-items:center;gap:12px;padding:12px 24px;border:1px solid rgba(31,78,53,0.2);background:rgba(31,78,53,0.04)}
+.hero-ofsted span{font-family:"Jost",sans-serif;font-size:10px;color:var(--text-mid);letter-spacing:2px;text-transform:uppercase}
+.mission{background:var(--white)}
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.value-list{display:flex;flex-direction:column}
+.value-item{display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid var(--cream-dark)}
+.value-item:first-child{padding-top:0;border-top:1px solid var(--cream-dark)}
+.v-num{font-family:"Playfair Display",serif;font-size:34px;font-weight:400;color:var(--gold);opacity:0.45;line-height:1}
+.v-title{font-family:"Jost",sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.v-desc{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--text-mid)}
+.approach-sec{background:var(--cream)}
+.approach-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:60px}
+.vcard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.vcard{background:var(--white);padding:48px 36px;position:relative;overflow:hidden;transition:background 0.3s}
+.vcard::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+.vcard:hover::after{transform:scaleX(1)}
+.vcard:hover{background:var(--green-pale)}
+.vcard-icon{width:40px;height:40px;margin-bottom:28px}
+.vcard-icon svg{width:34px;height:34px;stroke:var(--green-mid);fill:none;stroke-width:1.2}
+.vcard-title{font-family:"Jost",sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.vcard-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.75;color:var(--text-mid)}
+.la-sec{padding:100px 80px}
+.la-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.la-sec .body{margin-bottom:16px}
+.ofsted-note{font-family:"Jost",sans-serif;font-size:12px;color:rgba(31,78,53,0.8);line-height:1.7;margin-bottom:36px;padding:16px 20px;border:1px solid rgba(31,78,53,0.2);background:rgba(31,78,53,0.05)}
+.stat-card{background:var(--white);border:1px solid rgba(31,78,53,0.15);padding:24px 32px;display:flex;align-items:center;gap:24px;margin-bottom:16px}
+.stat-num{font-family:"Playfair Display",serif;font-size:48px;font-weight:400;color:var(--green);line-height:1;min-width:80px}
+.stat-lbl{font-family:"Jost",sans-serif;font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);line-height:1.6}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-text p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:24px}
+.pullquote{font-family:"Playfair Display",serif;font-size:24px;font-weight:400;font-style:italic;color:var(--green);line-height:1.5;padding:36px 0 36px 28px;border-left:3px solid var(--gold);margin:36px 0}
+.acard{background:var(--cream);padding:48px 40px}
+.acard-rule{width:40px;height:2px;background:var(--gold);margin-bottom:28px}
+.acard-label{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--sage);margin-bottom:16px}
+.acard-name{font-family:"Playfair Display",serif;font-size:30px;font-weight:600;color:var(--green);margin-bottom:6px}
+.acard-role{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
+.acard-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.8;color:var(--text-mid);margin-bottom:18px}
+.acard-detail{font-family:"Jost",sans-serif;font-size:12px;color:var(--text-light);line-height:1.7;padding-top:20px;border-top:1px solid var(--cream-dark)}
+.acard-detail strong{color:var(--green);font-weight:500}
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.principle{background:var(--white);padding:48px 36px;border-bottom:3px solid transparent;transition:border-color 0.3s}
+.principle:hover{border-bottom-color:var(--gold)}
+.p-num{font-family:"Playfair Display",serif;font-size:52px;font-weight:400;color:var(--gold);opacity:0.2;line-height:1;margin-bottom:16px}
+.p-title{font-family:"Jost",sans-serif;font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.p-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.75;color:var(--text-mid)}
+.vision-sec{background:var(--green-pale);padding:100px 80px;text-align:center}
+.vision-inner{max-width:800px;margin:0 auto}
+.vision-inner .body{margin-bottom:40px}
+
+/* ── APPROACH ── */
+.approach-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:48px}
+.approach-intro-text p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:24px}
+.pillars-sum{background:var(--cream);padding:40px}
+.ps-item{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--cream-dark)}
+.ps-item:first-child{border-top:1px solid var(--cream-dark)}
+.ps-num{font-family:"Playfair Display",serif;font-size:22px;color:var(--gold);opacity:0.5;min-width:28px}
+.ps-lbl{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--green)}
+.pillars-sec{background:var(--cream)}
+.pillar{display:grid;grid-template-columns:110px 1fr;gap:60px;align-items:start;padding:80px 0;border-bottom:1px solid var(--cream-dark)}
+.pillar:first-child{padding-top:0}
+.pillar:last-child{border-bottom:none;padding-bottom:0}
+.pi-num{font-family:"Playfair Display",serif;font-size:80px;font-weight:400;color:var(--gold);opacity:0.2;line-height:1;text-align:right}
+.pi-label{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.pi-title{font-family:"Playfair Display",serif;font-size:34px;font-weight:400;color:var(--green);margin-bottom:24px;line-height:1.2}
+.pi-body{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid)}
+.pi-body p{margin-bottom:16px}
+.collab-sec{background:var(--green-pale);padding:100px 80px}
+.collab-grid-outer{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.collab-body{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:20px}
+.collab-tags{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+.collab-tag{background:rgba(255,255,255,0.6);border:1px solid rgba(31,78,53,0.15);padding:16px 20px;font-family:"Jost",sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-mid)}
+
+/* ── HOMES ── */
+.gallery-sec{padding:100px 80px}
+.gallery-sec-inner{max-width:1200px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.gallery-slot{background:var(--cream);border:1px dashed rgba(31,78,53,0.25);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.gallery-slot svg{width:32px;height:32px;stroke:rgba(31,78,53,0.4);fill:none;stroke-width:1}
+.gallery-lbl{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-light)}
+.gallery-note{font-family:"Cormorant Garamond",serif;font-size:15px;font-style:italic;color:var(--text-light);text-align:center;margin-top:24px}
+.homes-env-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.homes-env-text p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:24px}
+.homes-quote{font-family:"Playfair Display",serif;font-size:24px;font-weight:400;font-style:italic;color:var(--green);line-height:1.55;padding:40px 0 40px 28px;border-left:3px solid var(--gold)}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:60px}
+.feat-card{background:var(--cream);padding:48px 40px}
+.feat-icon{width:48px;height:48px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+.feat-icon svg{width:26px;height:26px;stroke:var(--green-mid);fill:none;stroke-width:1.3}
+.feat-title{font-family:"Jost",sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.feat-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.75;color:var(--text-mid)}
+.network-sec{background:var(--green);padding:100px 80px;text-align:center}
+.network-inner{max-width:760px;margin:0 auto}
+.network-inner .eyebrow{color:var(--gold);justify-content:center}
+.network-inner .eyebrow::before{display:none}
+.network-inner p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;color:rgba(250,247,242,0.75);line-height:1.85;margin:24px 0 40px}
+
+/* ── REFERRALS ── */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.ref-text p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:24px}
+.glance{background:var(--cream);padding:40px}
+.glance-title{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--sage);margin-bottom:24px}
+.glance-row{display:grid;grid-template-columns:1fr 1fr;padding:16px 0;border-bottom:1px solid var(--cream-dark)}
+.glance-row:first-of-type{border-top:1px solid var(--cream-dark)}
+.glance-lbl{font-family:"Jost",sans-serif;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-light)}
+.glance-val{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:400;color:var(--green)}
+.needs-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
+.needs-can{background:var(--white);padding:56px 48px}
+.needs-not{background:var(--green);padding:56px 48px}
+.needs-col-title{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px}
+.needs-can .needs-col-title{color:var(--green-mid)}
+.needs-not .needs-col-title{color:var(--gold)}
+.needs-not-intro{font-family:"Cormorant Garamond",serif;font-size:16px;font-weight:300;color:rgba(250,247,242,0.6);line-height:1.7;margin-bottom:28px}
+.needs-item{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.6;padding:14px 0;border-bottom:1px solid var(--cream-dark);display:flex;align-items:start;gap:16px;color:var(--text-mid)}
+.needs-item::before{content:"";width:6px;height:6px;background:var(--green-mid);border-radius:50%;margin-top:8px;flex-shrink:0}
+.needs-not .needs-item{color:rgba(250,247,242,0.75);border-bottom-color:rgba(255,255,255,0.07)}
+.needs-not .needs-item::before{background:var(--gold)}
+.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.proc-steps{display:flex;flex-direction:column}
+.proc-step{display:grid;grid-template-columns:56px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--cream-dark);align-items:start}
+.proc-step:first-child{padding-top:0;border-top:1px solid var(--cream-dark)}
+.proc-num{font-family:"Playfair Display",serif;font-size:30px;font-weight:400;color:var(--gold);opacity:0.5;line-height:1}
+.proc-title{font-family:"Jost",sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.proc-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--text-mid)}
+.proc-right p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:24px}
+.proc-highlight{background:var(--green-pale);padding:28px 32px;border-left:4px solid var(--gold);margin-bottom:36px}
+.proc-highlight p{font-family:"Jost",sans-serif;font-size:12px;line-height:1.7;color:var(--text-mid);margin:0}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-info p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:28px}
+.c-detail{display:flex;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid var(--cream-dark)}
+.c-detail:first-of-type{border-top:1px solid var(--cream-dark)}
+.c-icon{width:40px;height:40px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-icon svg{width:18px;height:18px;stroke:var(--green-mid);fill:none;stroke-width:1.5}
+.c-lbl{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-bottom:5px}
+.c-val{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--green)}
+.c-val a{color:var(--green);text-decoration:none}
+.ref-note{background:var(--cream);padding:28px 32px;margin-top:36px}
+.ref-note-lbl{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.ref-note-body{font-family:"Cormorant Garamond",serif;font-size:16px;font-weight:300;line-height:1.75;color:var(--text-mid)}
+.c-direct{background:var(--green);padding:24px 28px;margin-top:24px}
+.c-direct-lbl{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.c-direct-body{font-family:"Cormorant Garamond",serif;font-size:16px;font-weight:300;color:rgba(250,247,242,0.75);line-height:1.7}
+.c-direct-body a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.form-wrap{background:var(--cream);padding:56px 48px}
+.form-title{font-family:"Playfair Display",serif;font-size:28px;font-weight:600;color:var(--green);margin-bottom:8px}
+.form-sub{font-family:"Cormorant Garamond",serif;font-size:16px;font-style:italic;color:var(--text-light);margin-bottom:36px}
+.form-group{margin-bottom:22px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-label{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:8px}
+.form-input{width:100%;padding:13px 16px;background:var(--white);border:1px solid var(--cream-dark);font-family:"Cormorant Garamond",serif;font-size:17px;color:var(--text);outline:none;transition:border-color 0.3s}
+.form-input:focus{border-color:var(--green)}
+.form-select{width:100%;padding:13px 16px;background:var(--white);border:1px solid var(--cream-dark);font-family:"Cormorant Garamond",serif;font-size:17px;color:var(--text);outline:none;appearance:none;cursor:pointer}
+.form-textarea{width:100%;padding:13px 16px;background:var(--white);border:1px solid var(--cream-dark);font-family:"Cormorant Garamond",serif;font-size:17px;color:var(--text);outline:none;resize:vertical;min-height:140px;transition:border-color 0.3s}
+.form-textarea:focus{border-color:var(--green)}
+.form-submit{width:100%;padding:17px;background:var(--green);color:#fff;font-family:"Jost",sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:2px solid var(--green);cursor:pointer;transition:all 0.3s;margin-top:8px}
+.form-submit:hover{background:transparent;color:var(--green)}
+
+/* ── PARTNER ── */
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.partner-text p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-bottom:24px}
+.partner-panel{background:var(--green-pale);padding:40px;border-left:4px solid var(--gold);margin-bottom:2px}
+.pp-lbl{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--sage);margin-bottom:16px}
+.pp-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;font-style:italic;color:var(--green);line-height:1.6;margin-bottom:20px}
+.pp-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.75;color:var(--text-mid)}
+.partner-cta-box{background:var(--green);padding:40px}
+.pc-lbl{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.pc-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;color:rgba(250,247,242,0.75);line-height:1.75;margin-bottom:24px}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:60px}
+.benefit{background:var(--white);padding:48px 40px;border-bottom:3px solid transparent;transition:border-color 0.3s}
+.benefit:hover{border-bottom-color:var(--gold)}
+.b-icon{width:48px;height:48px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.b-icon svg{width:22px;height:22px;stroke:var(--green-mid);fill:none;stroke-width:1.5}
+.b-title{font-family:"Jost",sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.b-body{font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:300;line-height:1.75;color:var(--text-mid)}
+.criteria-sec{background:var(--green-pale);padding:100px 80px}
+.criteria-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.crit-list{display:flex;flex-direction:column;margin-top:16px}
+.crit{display:flex;align-items:start;gap:16px;padding:18px 0;border-bottom:1px solid rgba(31,78,53,0.12)}
+.crit:first-child{border-top:1px solid rgba(31,78,53,0.12)}
+.crit-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;margin-top:8px;flex-shrink:0}
+.crit-text{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:300;line-height:1.6;color:var(--text-mid)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:60px 32px}
+  .la-sec,.gallery-sec,.network-sec,.collab-sec,.vision-sec,.criteria-sec,.cta-band{padding:60px 32px}
+  .pg-hero{padding:80px 32px 60px}
+  footer{flex-direction:column;text-align:center;padding:48px 32px;gap:32px}
+  .ft-contact{text-align:center}
+  .hero-title{font-size:clamp(36px,9vw,64px)}
+  .mission-grid,.approach-header,.la-inner,.about-grid,.approach-intro-grid,
+  .collab-grid-outer,.homes-env-grid,.ref-grid,.process-grid,.contact-grid,
+  .partner-grid,.criteria-grid{grid-template-columns:1fr;gap:40px}
+  .vcard-grid,.principles-grid,.features-grid,.gallery-grid,
+  .needs-grid,.benefits-grid{grid-template-columns:1fr}
+  .collab-tags{grid-template-columns:1fr 1fr}
+  .pillar{grid-template-columns:1fr;gap:12px}
+  .pi-num{font-size:48px;text-align:left}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  nav{padding:0 16px;height:64px}
+  .mobile-menu{top:64px}
+  section{padding:48px 20px}
+  .pg-hero{padding:64px 20px 40px}
+  footer{padding:40px 20px}
+  .form-wrap{padding:36px 24px}
+  .acard{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <span class="nav-logo-name">St James Haven</span>
+    <span class="nav-logo-sub">Children's Home</span>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')"      class="nav-link" data-page="home">Home</a></li>
+    <li><a onclick="showPage('about')"     class="nav-link" data-page="about">About Us</a></li>
+    <li><a onclick="showPage('approach')"  class="nav-link" data-page="approach">Our Approach</a></li>
+    <li><a onclick="showPage('homes')"     class="nav-link" data-page="homes">Our Homes</a></li>
+    <li><a onclick="showPage('referrals')" class="nav-link" data-page="referrals">Referrals</a></li>
+    <li><a onclick="showPage('partner')"   class="nav-link" data-page="partner">Partner With Us</a></li>
+    <li><a onclick="showPage('contact')"   class="nav-link nav-cta" data-page="contact">Get In Touch</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');closeMobile()">Home</a>
+  <a onclick="showPage('about');closeMobile()">About Us</a>
+  <a onclick="showPage('approach');closeMobile()">Our Approach</a>
+  <a onclick="showPage('homes');closeMobile()">Our Homes</a>
+  <a onclick="showPage('referrals');closeMobile()">Referrals</a>
+  <a onclick="showPage('partner');closeMobile()">Partner With Us</a>
+  <a onclick="showPage('contact');closeMobile()" class="mobile-cta">Get In Touch</a>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page active page-wrap">
+  <div class="home-hero">
+    <h1 class="hero-title">St James Haven</h1>
+    <p class="hero-tag">A place of warmth, safety &amp; belonging</p>
+    <div class="hero-rule"><span></span><i></i><span></span></div>
+    <p class="hero-body">St James Haven is a children's residential home dedicated to providing exceptional, personalised care for young people who need it most.</p>
+    <div class="hero-btns">
+      <button class="btn-d" onclick="showPage('contact')">Get In Touch</button>
+      <button class="btn-g" onclick="showPage('referrals')">Make a Referral</button>
+    </div>
+    <div class="hero-ofsted">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F4E35" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Registering with Ofsted &middot; Children's Homes (England) Regulations 2015</span>
+    </div>
+  </div>
+
+  <section class="mission" style="background:var(--white)">
+    <div class="section-inner">
+      <p class="eyebrow">Our Mission</p>
+      <div class="mission-grid">
+        <div>
+          <h2 class="h2">More Than a Home.<br><em>A Fresh Start.</em></h2>
+          <p class="body" style="margin-bottom:20px">At St James Haven, we believe every child deserves to feel safe, valued, and supported — not just in crisis, but every single day.</p>
+          <p class="body">We have built a home that goes beyond meeting basic needs. Our focus is on creating nurturing, stable environments where young people can heal, grow, and thrive, surrounded by a team that genuinely cares about their future.</p>
+        </div>
+        <div class="value-list">
+          <div class="value-item"><span class="v-num">01</span><div><p class="v-title">Safety First</p><p class="v-desc">A calm, secure environment where young people feel protected and respected at all times.</p></div></div>
+          <div class="value-item"><span class="v-num">02</span><div><p class="v-title">Wraparound Care</p><p class="v-desc">Tailored support that meets each child where they are — emotionally, educationally and socially.</p></div></div>
+          <div class="value-item"><span class="v-num">03</span><div><p class="v-title">Building Futures</p><p class="v-desc">We invest in the young people in our care and the adults they will become.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="approach-sec">
+    <div class="section-inner">
+      <div class="approach-header">
+        <div><p class="eyebrow">Our Approach</p><h2 class="h2">Care That<br><em>Goes Deeper</em></h2></div>
+        <p class="body">Holistic, consistent, and rooted in the belief that education and nurture, working together, can change the course of a young person's life.</p>
+      </div>
+      <div class="vcard-grid">
+        <div class="vcard"><div class="vcard-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><p class="vcard-title">Therapeutic Support</p><p class="vcard-body">Dedicated therapeutic input to help young people process their experiences and develop tools to manage their emotions.</p></div>
+        <div class="vcard"><div class="vcard-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><p class="vcard-title">Education Focused</p><p class="vcard-body">Education sits at the heart of everything we do, honouring the legacy of James, who devoted his life to proving its power to transform.</p></div>
+        <div class="vcard"><div class="vcard-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><p class="vcard-title">Structure &amp; Routine</p><p class="vcard-body">Clear, predictable routines that give young people a sense of order and security, while remaining responsive to individual needs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="la-sec">
+    <div class="la-inner">
+      <div>
+        <p class="eyebrow">For Placing Authorities</p>
+        <h2 class="h2">For Local Authorities &amp;<br><em>Commissioning Teams</em></h2>
+        <p class="body">St James Haven works in close partnership with Local Authorities and commissioning teams to provide high-quality, stable placements for children and young people with complex needs.</p>
+        <p class="body">We welcome early conversations with commissioning teams and placing authorities.</p>
+        <p class="ofsted-note">St James Haven is currently working towards Ofsted registration under the Children's Homes (England) Regulations 2015.</p>
+        <button class="btn-d" onclick="showPage('referrals')">Make a Referral Enquiry</button>
+      </div>
+      <div>
+        <div class="stat-card"><span class="stat-num">5</span><span class="stat-lbl">Residential places available</span></div>
+        <div class="stat-card"><span class="stat-num">8+</span><span class="stat-lbl">Ages 8 and above accepted</span></div>
+        <div class="stat-card"><span class="stat-num">24/7</span><span class="stat-lbl">Waking night staffing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band"><div class="cta-inner"><p class="eyebrow eyebrow-c">Work With Us</p><h2 class="h2">Interested in Working With Us?</h2><p class="body">Whether you are a commissioning team, a fellow professional, or someone passionate about children's care — we would love to hear from you.</p><button class="btn-d" onclick="showPage('contact')">Contact Us</button></div></div>
+
+  <footer>
+    <div class="ft-brand" onclick="showPage('home')"><div class="ft-name">St James Haven</div><div class="ft-tag">A place of warmth, safety &amp; belonging</div></div>
+    <div class="ft-nav"><ul class="ft-links"><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('approach')">Our Approach</a></li><li><a onclick="showPage('homes')">Our Homes</a></li><li><a onclick="showPage('referrals')">Referrals</a></li><li><a onclick="showPage('partner')">Partner With Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul><a href="https://www.linkedin.com/company/st-james-haven/" target="_blank" class="ft-li"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div>
+    <div class="ft-contact"><a href="mailto:contact@stjameshaven.com" class="ft-email">contact@stjameshaven.com</a><p class="ft-copy">&copy; 2026 St James Haven Ltd. Company No. 16683092</p></div>
+  </footer>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page page-wrap">
+  <div class="pg-hero"><div class="pg-hero-inner"><p class="eyebrow">About Us</p><h1 class="h1">Named With Purpose.<br><em>Built With Promise.</em></h1></div></div>
+  <section style="background:var(--white)"><div class="section-inner"><div class="about-grid">
+    <div class="about-text"><p class="eyebrow">Our Story</p><p>St James Haven is named in honour of James — a father, an educator and a visionary who believed deeply in the power of education to transform lives. He founded Interlink College and Little Achievers Nursery, and through both, he dedicated himself to giving young people the foundation they needed to flourish.</p><p>The vision for this home began with our family in 2012. When James passed, that vision did not end. It became a promise. St James Haven is the fulfilment of that promise.</p><blockquote class="pullquote">Haven is not just a name. It reflects exactly what this place is intended to be: a safe, structured and stable environment for displaced and vulnerable children.</blockquote><p>At its heart is the same education-focused, holistic ethos that defined our father's life's work. That is his legacy, and it lives here.</p></div>
+    <div><div class="acard"><div class="acard-rule"></div><p class="acard-label">Director &amp; Registered Manager</p><h2 class="acard-name">Esther Alo</h2><p class="acard-role">Director, St James Haven Ltd</p><p class="acard-body">As Director and Registered Manager of St James Haven, I have built this home from the ground up, with my father's values at the centre of every decision.</p><p class="acard-body">My background spans direct childcare practice, community youth leadership, and senior programme management at firms including Capgemini and KPMG. I am currently completing my Level 5 Diploma in Leadership and Management for Residential Childcare.</p><p class="acard-detail"><strong>Qualifications:</strong> BA (Hons) Law, London Metropolitan University<br><strong>Training:</strong> Level 5 Diploma in Residential Childcare (in progress)<br><strong>Clearance:</strong> SC Cleared</p></div></div>
+  </div></div></section>
+  <section style="background:var(--cream)"><div class="section-inner"><p class="eyebrow">What We Stand For</p><h2 class="h2">Our <em>Guiding Principles</em></h2><div class="principles-grid"><div class="principle"><p class="p-num">01</p><p class="p-title">Safety</p><p class="p-body">A calm, secure environment where young people feel protected at all times.</p></div><div class="principle"><p class="p-num">02</p><p class="p-title">Consistency</p><p class="p-body">Familiar faces, reliable routines, and a team that shows up every single day.</p></div><div class="principle"><p class="p-num">03</p><p class="p-title">Growth</p><p class="p-body">An education-focused approach that looks beyond today, investing in each young person's future and potential.</p></div></div></div></section>
+  <div class="vision-sec"><div class="vision-inner"><p class="eyebrow eyebrow-c">Part of Something Growing</p><h2 class="h2" style="text-align:center">A <em>Wider Vision</em></h2><p class="body" style="text-align:center">St James Haven is part of a wider vision — a growing network of homes, each rooted in the same values, the same ethos, and the same commitment to transforming the lives of vulnerable children.</p><button class="btn-d" onclick="showPage('contact')">Get In Touch</button></div></div>
+  <footer><div class="ft-brand" onclick="showPage('home')"><div class="ft-name">St James Haven</div><div class="ft-tag">A place of warmth, safety &amp; belonging</div></div><div class="ft-nav"><ul class="ft-links"><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('approach')">Our Approach</a></li><li><a onclick="showPage('homes')">Our Homes</a></li><li><a onclick="showPage('referrals')">Referrals</a></li><li><a onclick="showPage('partner')">Partner With Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul><a href="https://www.linkedin.com/company/st-james-haven/" target="_blank" class="ft-li"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div><div class="ft-contact"><a href="mailto:contact@stjameshaven.com" class="ft-email">contact@stjameshaven.com</a><p class="ft-copy">&copy; 2026 St James Haven Ltd. Company No. 16683092</p></div></footer>
+</div>
+
+<!-- APPROACH -->
+<div id="page-approach" class="page page-wrap">
+  <div class="pg-hero"><div class="pg-hero-inner"><p class="eyebrow">Our Approach</p><h1 class="h1">Care That<br><em>Goes Deeper</em></h1></div></div>
+  <section style="background:var(--white)"><div class="section-inner"><div class="approach-intro-grid"><div class="approach-intro-text"><p>At St James Haven, we believe that truly transformative care goes far beyond meeting a child's basic needs. It requires understanding who they are, what they have been through, and what they are capable of becoming.</p><p>Our approach is holistic, consistent, and rooted in the belief — inherited from our founder's legacy — that education and nurture, working together, can change the course of a young person's life.</p></div><div class="pillars-sum"><p class="eyebrow" style="margin-bottom:20px">Four Pillars</p><div class="ps-item"><span class="ps-num">1</span><span class="ps-lbl">Therapeutic Support</span></div><div class="ps-item"><span class="ps-num">2</span><span class="ps-lbl">Education Focused</span></div><div class="ps-item"><span class="ps-num">3</span><span class="ps-lbl">Trauma-Informed Care</span></div><div class="ps-item"><span class="ps-num">4</span><span class="ps-lbl">Structure &amp; Routine</span></div></div></div></div></section>
+  <section class="pillars-sec"><div class="section-inner">
+    <div class="pillar"><div class="pi-num">01</div><div><p class="pi-label">First Pillar</p><h2 class="pi-title">Therapeutic Support</h2><div class="pi-body"><p>We recognise that some young people need more than a stable home. They need dedicated therapeutic input to process their experiences and develop the tools to manage their emotions and relationships.</p><p>Our home is designed to work alongside therapeutic professionals, ensuring each young person has access to the right level of support at the right time.</p></div></div></div>
+    <div class="pillar"><div class="pi-num">02</div><div><p class="pi-label">Second Pillar</p><h2 class="pi-title">Education Focused</h2><div class="pi-body"><p>Education sits at the heart of everything we do. This is the legacy of James, our founder's father, who dedicated his life to proving that education has the power to transform lives.</p><p>We work closely with schools, colleges, and learning providers to ensure every young person in our care is supported to engage with education, whatever that looks like for them.</p></div></div></div>
+    <div class="pillar"><div class="pi-num">03</div><div><p class="pi-label">Third Pillar</p><h2 class="pi-title">Trauma-Informed Care</h2><div class="pi-body"><p>Many of the young people who come to us have experienced significant trauma. We never lose sight of that. Every interaction, every boundary, and every routine within our home is shaped by an understanding of how trauma affects behaviour, development, and trust.</p><p>We meet young people where they are, with patience, empathy and consistency, creating the safety they need to begin to heal.</p></div></div></div>
+    <div class="pillar"><div class="pi-num">04</div><div><p class="pi-label">Fourth Pillar</p><h2 class="pi-title">Structure &amp; Routine</h2><div class="pi-body"><p>Children who have experienced instability often find safety in structure. Our home operates with clear, predictable routines that give young people a sense of order and security, while always remaining flexible enough to respond to individual needs.</p></div></div></div>
+  </div></section>
+  <div class="collab-sec"><div class="collab-grid-outer"><div><p class="eyebrow">Working Together</p><h2 class="h2">A <em>Collaborative</em> Approach</h2><p class="collab-body">We do not work in isolation. We partner closely with local authorities, social workers, schools, therapists, and families to ensure every young person receives truly wraparound care.</p><p class="collab-body">We believe the best outcomes happen when everyone around a child is working from the same page — with honesty, transparency and the child's best interests at the centre.</p></div><div><div class="collab-tags"><div class="collab-tag">Local Authorities</div><div class="collab-tag">Social Workers</div><div class="collab-tag">Schools</div><div class="collab-tag">CAMHS</div><div class="collab-tag">Therapists</div><div class="collab-tag">Families</div></div></div></div></div>
+  <div class="cta-band"><div class="cta-inner"><p class="eyebrow eyebrow-c">Get In Touch</p><h2 class="h2">Want to Learn More?</h2><p class="body">We welcome conversations with commissioners, placing authorities, and fellow professionals.</p><button class="btn-d" onclick="showPage('contact')">Get In Touch</button></div></div>
+  <footer><div class="ft-brand" onclick="showPage('home')"><div class="ft-name">St James Haven</div><div class="ft-tag">A place of warmth, safety &amp; belonging</div></div><div class="ft-nav"><ul class="ft-links"><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('approach')">Our Approach</a></li><li><a onclick="showPage('homes')">Our Homes</a></li><li><a onclick="showPage('referrals')">Referrals</a></li><li><a onclick="showPage('partner')">Partner With Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul><a href="https://www.linkedin.com/company/st-james-haven/" target="_blank" class="ft-li"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div><div class="ft-contact"><a href="mailto:contact@stjameshaven.com" class="ft-email">contact@stjameshaven.com</a><p class="ft-copy">&copy; 2026 St James Haven Ltd. Company No. 16683092</p></div></footer>
+</div>
+
+<!-- HOMES -->
+<div id="page-homes" class="page page-wrap">
+  <div class="pg-hero"><div class="pg-hero-inner"><p class="eyebrow">Our Homes</p><h1 class="h1">A Real Home.<br><em>Not a Facility.</em></h1></div></div>
+  <div class="gallery-sec"><div class="gallery-sec-inner"><p class="eyebrow">Inside Our Homes</p><h2 class="h2">See <em>Our Spaces</em></h2><div class="gallery-grid"><div class="gallery-slot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="gallery-lbl">Bedrooms</span></div><div class="gallery-slot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="gallery-lbl">Living Areas</span></div><div class="gallery-slot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="gallery-lbl">Kitchen</span></div><div class="gallery-slot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="gallery-lbl">Garden</span></div><div class="gallery-slot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="gallery-lbl">Entrance</span></div><div class="gallery-slot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="gallery-lbl">Learning Space</span></div></div><p class="gallery-note">Photography to be added following renovation completion</p></div></div>
+  <section style="background:var(--cream)"><div class="section-inner"><div class="homes-env-grid"><div class="homes-env-text"><p class="eyebrow">Our Environment</p><p>Every St James Haven home is designed with one thing in mind: that a child walking through the door should feel like they belong there.</p><p>We are deliberate about how we design and maintain our homes. No long corridors, no institutional feel. Just a well-kept, comfortable home where young people have space to breathe, to rest, and to be themselves.</p><p>Each St James Haven home is a thoughtfully restored, substantial family property — designed to feel like a genuine home rather than a care setting. The quality of the environment is intentional.</p></div><div><blockquote class="homes-quote">We believe that young people who have experienced instability deserve to live somewhere they can feel proud of. A refined, well-maintained home communicates something important: that they are worth it.</blockquote></div></div></div></section>
+  <section style="background:var(--white)"><div class="section-inner"><p class="eyebrow">Designed With Care</p><h2 class="h2">Every Detail <em>Considered</em></h2><div class="features-grid"><div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><p class="feat-title">Individual Bedrooms</p><p class="feat-body">Private, personalised spaces where young people can feel ownership and pride. Children are actively involved in making their room their own.</p></div><div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><p class="feat-title">Shared Communal Areas</p><p class="feat-body">Welcoming spaces that encourage connection and daily life, including a fully equipped kitchen, spacious dining room and comfortable living areas.</p></div><div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div><p class="feat-title">Outdoor Space</p><p class="feat-body">A large private garden providing space for outdoor activities, a relaxation area, and a gardening project as part of our life skills programme.</p></div><div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><p class="feat-title">Safety &amp; Security</p><p class="feat-body">Electronic gated entrance, full CCTV, comprehensive alarm systems, and waking night staffing provide robust security appropriate to each young person's needs.</p></div></div></div></section>
+  <div class="network-sec"><div class="network-inner"><p class="eyebrow eyebrow-c" style="color:var(--gold)">Our Growing Network</p><h2 class="h2 h-light">More Homes.<br><em>Same Values.</em></h2><p>As we grow, every home we open will carry the same values, the same ethos, and the same commitment to quality — giving more young people access to the care they deserve.</p><button class="btn-c" onclick="showPage('contact')">Make an Enquiry</button></div></div>
+  <footer><div class="ft-brand" onclick="showPage('home')"><div class="ft-name">St James Haven</div><div class="ft-tag">A place of warmth, safety &amp; belonging</div></div><div class="ft-nav"><ul class="ft-links"><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('approach')">Our Approach</a></li><li><a onclick="showPage('homes')">Our Homes</a></li><li><a onclick="showPage('referrals')">Referrals</a></li><li><a onclick="showPage('partner')">Partner With Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul><a href="https://www.linkedin.com/company/st-james-haven/" target="_blank" class="ft-li"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div><div class="ft-contact"><a href="mailto:contact@stjameshaven.com" class="ft-email">contact@stjameshaven.com</a><p class="ft-copy">&copy; 2026 St James Haven Ltd. Company No. 16683092</p></div></footer>
+</div>
+
+<!-- REFERRALS -->
+<div id="page-referrals" class="page page-wrap">
+  <div class="pg-hero"><div class="pg-hero-inner"><p class="eyebrow">For Placing Authorities</p><h1 class="h1">Referrals &amp;<br><em>Placements</em></h1></div></div>
+  <section style="background:var(--white)"><div class="section-inner"><div class="ref-grid"><div class="ref-text"><p class="eyebrow">For Commissioners</p><h2 class="h2">For Local Authorities &amp; <em>Commissioning Teams</em></h2><p>St James Haven is currently working towards Ofsted registration under the Children's Homes (England) Regulations 2015.</p><p>We work in close partnership with Local Authorities and commissioning teams to provide high-quality, stable placements for children and young people with complex needs.</p><p>We welcome early conversations — before a referral is formally made — to help you assess whether St James Haven is the right fit for a young person in your care.</p><button class="btn-d" onclick="showPage('contact')" style="margin-top:8px">Make a Referral Enquiry</button></div><div><div class="glance"><p class="glance-title">Placement at a Glance</p><div class="glance-row"><span class="glance-lbl">Capacity</span><span class="glance-val">5 places</span></div><div class="glance-row"><span class="glance-lbl">Age Range</span><span class="glance-val">8 to 18 years</span></div><div class="glance-row"><span class="glance-lbl">Gender</span><span class="glance-val">Male and female</span></div><div class="glance-row"><span class="glance-lbl">Legal Status</span><span class="glance-val">Section 20 / Full Care Order</span></div></div></div></div></div></section>
+  <section style="background:var(--cream)"><div class="section-inner"><p class="eyebrow">Our Scope</p><h2 class="h2">Needs We <em>Support</em></h2><div class="needs-grid"><div class="needs-can"><p class="needs-col-title">Needs We Are Able to Support</p><div class="needs-item">Emotional and behavioural difficulties (EBD)</div><div class="needs-item">Trauma and attachment difficulties arising from abuse, neglect or loss</div><div class="needs-item">Mental health difficulties including anxiety, depression and low mood</div><div class="needs-item">Mild to moderate learning disabilities where specialist provision is not required</div><div class="needs-item">Risk factors associated with child sexual exploitation (CSE)</div><div class="needs-item">Substance misuse histories where this is not the primary presenting need</div><div class="needs-item">Unaccompanied asylum seeking children requiring stability and cultural sensitivity</div></div><div class="needs-not"><p class="needs-col-title">Needs Outside Our Registered Scope</p><p class="needs-not-intro">To ensure transparency, we are not registered to accommodate young people with the following as their primary presenting need:</p><div class="needs-item">Serious or persistent offending behaviour as the primary need</div><div class="needs-item">Those requiring secure accommodation</div><div class="needs-item">Acute mental health needs requiring specialist inpatient provision</div><div class="needs-item">Specialist medical care beyond the capacity of community health services</div></div></div></div></section>
+  <section style="background:var(--white)"><div class="section-inner"><div class="process-grid"><div><p class="eyebrow">How It Works</p><h2 class="h2">How <em>Referrals Work</em></h2><div class="proc-steps"><div class="proc-step"><span class="proc-num">01</span><div><p class="proc-title">Initial Enquiry</p><p class="proc-body">Contact us with basic details about the young person. We respond to all referral enquiries promptly.</p></div></div><div class="proc-step"><span class="proc-num">02</span><div><p class="proc-title">Referral Assessment</p><p class="proc-body">Our Registered Manager individually assesses every referral, considering the young person's needs and our current capacity.</p></div></div><div class="proc-step"><span class="proc-num">03</span><div><p class="proc-title">Matching Decision</p><p class="proc-body">We consider impact on existing residents and the views of the child wherever possible. We only accept placements where we are confident we can deliver meaningful care.</p></div></div><div class="proc-step"><span class="proc-num">04</span><div><p class="proc-title">Placement Begins</p><p class="proc-body">We work closely with the placing authority, social worker and family to ensure a well-planned, supported transition into the home.</p></div></div></div></div><div class="proc-right"><p>Every referral to St James Haven is individually assessed by our Registered Manager before a placement decision is made.</p><p>We only accept placements where we are confident we can deliver safe, effective and meaningful care.</p><div class="proc-highlight"><p>We welcome early conversations, before a referral is formally made, to help placing authorities assess whether St James Haven is the right fit. Please include the young person's age, gender and a brief outline of their needs when making contact.</p></div><button class="btn-d" onclick="showPage('contact')">Contact Us to Discuss</button></div></div></div></section>
+  <footer><div class="ft-brand" onclick="showPage('home')"><div class="ft-name">St James Haven</div><div class="ft-tag">A place of warmth, safety &amp; belonging</div></div><div class="ft-nav"><ul class="ft-links"><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('approach')">Our Approach</a></li><li><a onclick="showPage('homes')">Our Homes</a></li><li><a onclick="showPage('referrals')">Referrals</a></li><li><a onclick="showPage('partner')">Partner With Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul><a href="https://www.linkedin.com/company/st-james-haven/" target="_blank" class="ft-li"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div><div class="ft-contact"><a href="mailto:contact@stjameshaven.com" class="ft-email">contact@stjameshaven.com</a><p class="ft-copy">&copy; 2026 St James Haven Ltd. Company No. 16683092</p></div></footer>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page page-wrap">
+  <div class="pg-hero"><div class="pg-hero-inner"><p class="eyebrow">Get In Touch</p><h1 class="h1">We'd Love to<br><em>Hear From You</em></h1></div></div>
+  <section style="background:var(--white)"><div class="section-inner"><div class="contact-grid">
+    <div class="contact-info">
+      <p class="eyebrow">Contact Details</p>
+      <p>Whether you are a Local Authority commissioner, a social worker with a referral enquiry, a professional looking to connect, or someone interested in joining our team — we welcome your message.</p>
+      <p>We aim to respond to all enquiries within one working day.</p>
+      <div class="c-detail"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><p class="c-lbl">Email</p><p class="c-val"><a href="mailto:contact@stjameshaven.com">contact@stjameshaven.com</a></p></div></div>
+      <div class="c-detail"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.34 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.58a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><p class="c-lbl">Phone</p><p class="c-val">07496 634 507</p></div></div>
+      <div class="ref-note"><p class="ref-note-lbl">Making a Referral?</p><p class="ref-note-body">If you are a commissioner or social worker with a specific referral to discuss, please include the young person's age, gender and a brief outline of their needs in your message. We will respond promptly to all referral enquiries.</p></div>
+      <div class="c-direct"><p class="c-direct-lbl">Prefer to speak directly?</p><p class="c-direct-body">Email us at <a href="mailto:contact@stjameshaven.com">contact@stjameshaven.com</a> and we will arrange a call at a time that suits you.</p></div>
+    </div>
+    <div><div class="form-wrap">
+      <div id="contactFormDefault">
+        <h2 class="form-title">Send Us a Message</h2>
+        <p class="form-sub">We aim to respond within one working day</p>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm" onsubmit="return handleContactSubmit(event)">
+          <input type="hidden" name="form-name" value="contact">
+          <p style="position:absolute;left:-9999px;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Full Name</label><input type="text" name="name" class="form-input" placeholder="Your name" required></div>
+            <div class="form-group"><label class="form-label">Organisation</label><input type="text" name="organisation" class="form-input" placeholder="Optional"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" class="form-input" placeholder="your@email.com" required></div>
+            <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" name="phone" class="form-input" placeholder="Optional"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nature of Enquiry</label>
+            <select name="enquiry-type" class="form-select">
+              <option>Referral Enquiry</option>
+              <option>Property Partnership</option>
+              <option>General Enquiry</option>
+              <option>Employment</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Message</label><textarea name="message" class="form-textarea" placeholder="Tell us how we can help..." required></textarea></div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+      <div id="contactFormSuccess" style="display:none;text-align:center;padding:40px 0;">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1F4E35" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2 class="form-title" style="margin-bottom:12px;">Thank You</h2>
+        <p class="body" style="margin-bottom:0;">Your message has been received. We aim to respond within one working day.</p>
+      </div>
+    </div></div>
+  </div></div></section>
+  <footer><div class="ft-brand" onclick="showPage('home')"><div class="ft-name">St James Haven</div><div class="ft-tag">A place of warmth, safety &amp; belonging</div></div><div class="ft-nav"><ul class="ft-links"><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('approach')">Our Approach</a></li><li><a onclick="showPage('homes')">Our Homes</a></li><li><a onclick="showPage('referrals')">Referrals</a></li><li><a onclick="showPage('partner')">Partner With Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul><a href="https://www.linkedin.com/company/st-james-haven/" target="_blank" class="ft-li"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div><div class="ft-contact"><a href="mailto:contact@stjameshaven.com" class="ft-email">contact@stjameshaven.com</a><p class="ft-copy">&copy; 2026 St James Haven Ltd. Company No. 16683092</p></div></footer>
+</div>
+
+<!-- PARTNER -->
+<div id="page-partner" class="page page-wrap">
+  <div class="pg-hero"><div class="pg-hero-inner"><p class="eyebrow">Property Partnerships</p><h1 class="h1">Partner With<br><em>St James Haven</em></h1></div></div>
+  <section style="background:var(--white)"><div class="section-inner"><div class="partner-grid">
+    <div class="partner-text"><p class="eyebrow">Why Partner With Us</p><p>At St James Haven, we are committed to providing exceptional residential care for children and young people across the region. As we grow, we are looking to build relationships with property owners who share our values and want to play a meaningful role in transforming suitable properties into places of safety and belonging.</p><p>Leasing your property to a registered children's home provider is a secure, purposeful, and professionally managed arrangement — and one that many property owners tell us is among the most rewarding decisions they have made.</p><blockquote class="pullquote">Your building becomes more than bricks and mortar. It becomes a home — a place where a young person feels safe, perhaps for the first time.</blockquote><p>We are actively building relationships with property owners who share our values, and are always keen to hear from those with suitable properties. If you own a property that could be suitable, we would love to hear from you early — ahead of formal searches.</p></div>
+    <div><div class="partner-panel"><p class="pp-lbl">Building For The Future</p><p class="pp-title">St James Haven is committed to building a trusted, values-led property portfolio as a foundation for long-term growth.</p><p class="pp-body">Getting in touch now means we can begin an informed conversation at your pace, without pressure or obligation. We are building long-term relationships, not quick transactions.</p></div><div class="partner-cta-box"><p class="pc-lbl">Interested in a conversation?</p><p class="pc-body">We welcome enquiries from landlords, developers, and property owners at any stage. All conversations are handled with complete discretion.</p><button class="btn-c" onclick="showPage('contact')">Get In Touch</button></div></div>
+  </div></div></section>
+  <section style="background:var(--cream)"><div class="section-inner"><p class="eyebrow">What We Offer</p><h2 class="h2">The Benefits of<br><em>Partnering With Us</em></h2><div class="benefits-grid"><div class="benefit"><div class="b-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><p class="b-title">Guaranteed Long-Term Income</p><p class="b-body">Long-term lease agreements with no void periods and no letting agent fees. A stable, predictable income from a professionally managed tenancy.</p></div><div class="benefit"><div class="b-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><p class="b-title">Property Maintained to High Standards</p><p class="b-body">As a regulated provider, we are required to maintain properties to the highest professional standards. Your property will be cared for — often improved — during our tenancy.</p></div><div class="benefit"><div class="b-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><p class="b-title">Hassle-Free Management</p><p class="b-body">We handle day-to-day management, maintenance coordination, and all regulatory compliance. You receive your rent without the usual demands of active landlordship.</p></div><div class="benefit"><div class="b-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><p class="b-title">Genuine Social Impact</p><p class="b-body">Your property becomes a safe, nurturing home for children and young people in care. Few investments carry more meaning than that.</p></div></div></div></section>
+  <div class="criteria-sec"><div class="criteria-grid"><div><p class="eyebrow">What We Look For</p><h2 class="h2">Suitable<br><em>Properties</em></h2><p class="body" style="margin-top:24px">We are interested in larger residential properties — typically Victorian or Edwardian houses, former care homes, or substantial detached properties. We also consider properties requiring refurbishment, as we have the expertise to bring a building up to Ofsted registration standard.</p></div><div><div class="crit-list"><div class="crit"><div class="crit-dot"></div><p class="crit-text">Minimum 4–6 bedrooms with flexible room layout</p></div><div class="crit"><div class="crit-dot"></div><p class="crit-text">Generous communal living, kitchen, and dining space</p></div><div class="crit"><div class="crit-dot"></div><p class="crit-text">Private outdoor space or garden</p></div><div class="crit"><div class="crit-dot"></div><p class="crit-text">Residential setting with good local amenities and transport links</p></div><div class="crit"><div class="crit-dot"></div><p class="crit-text">Open to long-term lease arrangements of 5 years or more</p></div><div class="crit"><div class="crit-dot"></div><p class="crit-text">Properties requiring refurbishment also considered</p></div></div></div></div></div>
+  <div class="cta-band"><div class="cta-inner"><p class="eyebrow eyebrow-c">Start a Conversation</p><h2 class="h2">Ready to Talk?</h2><p class="body">Whether you own a property now or are simply curious about what a partnership involves, we welcome your enquiry. All discussions are informal, confidential, and without obligation.</p><button class="btn-d" onclick="showPage('contact')">Contact Us</button></div></div>
+  <footer><div class="ft-brand" onclick="showPage('home')"><div class="ft-name">St James Haven</div><div class="ft-tag">A place of warmth, safety &amp; belonging</div></div><div class="ft-nav"><ul class="ft-links"><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('approach')">Our Approach</a></li><li><a onclick="showPage('homes')">Our Homes</a></li><li><a onclick="showPage('referrals')">Referrals</a></li><li><a onclick="showPage('partner')">Partner With Us</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul><a href="https://www.linkedin.com/company/st-james-haven/" target="_blank" class="ft-li"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div><div class="ft-contact"><a href="mailto:contact@stjameshaven.com" class="ft-email">contact@stjameshaven.com</a><p class="ft-copy">&copy; 2026 St James Haven Ltd. Company No. 16683092</p></div></footer>
+</div>
+
+<script>
+function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById("page-"+id).classList.add("active");document.querySelectorAll(".nav-link").forEach(a=>{a.classList.toggle("active-link",a.dataset.page===id)});window.scrollTo({top:0,behavior:"smooth"})}
+function toggleMobile(){document.getElementById("mobileMenu").classList.toggle("open")}
+function closeMobile(){document.getElementById("mobileMenu").classList.remove("open")}
+
+function handleContactSubmit(e){
+  e.preventDefault();
+  var form = e.target;
+  var data = new FormData(form);
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(data).toString()
+  })
+  .then(function(){
+    document.getElementById("contactFormDefault").style.display = "none";
+    document.getElementById("contactFormSuccess").style.display = "block";
+  })
+  .catch(function(){
+    alert("Sorry, something went wrong sending your message. Please email us directly at contact@stjameshaven.com");
+  });
+  return false;
+}
+</script>
+</body>
+</html>
